@@ -6,6 +6,8 @@ import Auth from './Auth'
 
 import AdminDashboard from './AdminDashboard'
 
+const API_BASE = (import.meta.env.VITE_API_URL || 'http://localhost:5000').replace(/\/$/, '')
+
 const categories = ['All', 'Men', 'Women', 'Footwear', 'Accessories']
 
 
@@ -85,7 +87,7 @@ const [authToken, setAuthToken] = useState(
 
   useEffect(() => {
 
-    fetch('http://localhost:5000/api/health')
+    fetch(`${API_BASE}/api/health`)
 
       .then(response => {
 
@@ -105,7 +107,7 @@ const [authToken, setAuthToken] = useState(
 
   useEffect(() => {
 
-    fetch('http://localhost:5000/api/products')
+    fetch(`${API_BASE}/api/products`)
 
       .then(response => {
 
@@ -232,7 +234,7 @@ const [authToken, setAuthToken] = useState(
 
     try {
       const response = await fetch(
-        'http://localhost:5000/api/orders/my-orders',
+        `${API_BASE}/api/orders/my-orders`,
         {
           headers: {
             Authorization: `Bearer ${authToken}`
@@ -347,7 +349,7 @@ const backToShopping = () => {
 
     const response = await fetch(
 
-      'http://localhost:5000/api/orders',
+      `${API_BASE}/api/orders`,
 
       {
 
