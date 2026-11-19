@@ -6,12 +6,14 @@ const productSchema = new mongoose.Schema(
     name: {
       type: String,
       required: true,
-      trim: true
+      trim: true,
+      maxlength: 100
     },
     category: {
       type: String,
       required: true,
-      trim: true
+      trim: true,
+      enum: ['Men', 'Women', 'Footwear', 'Accessories']
     },
     price: {
       type: Number,
@@ -24,20 +26,27 @@ const productSchema = new mongoose.Schema(
     },
     image: {
       type: String,
-      default: ''
+      default: '',
+      maxlength: 2048
     },
     tag: {
       type: String,
-      default: ''
+      default: '',
+      maxlength: 30
     },
     description: {
       type: String,
-      default: ''
+      default: '',
+      maxlength: 1000
     },
     stock: {
       type: Number,
       default: 0,
-      min: 0
+      min: 0,
+      validate: {
+        validator: Number.isInteger,
+        message: 'Stock must be a whole number'
+      }
     }
   },
   {
