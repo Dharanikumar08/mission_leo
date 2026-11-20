@@ -880,83 +880,44 @@ const backToShopping = () => {
 
           <>
 
-            <section className="hero" id="home">
+<section className="hero" id="home">
+  <div className="hero-content">
+    <span className="eyebrow">STYLE, REIMAGINED FOR EVERYDAY</span>
 
-              <div className="hero-content">
+    <h1>
+      Discover your<br />
+      <span>signature style.</span>
+    </h1>
 
-                <span className="eyebrow">YOUR STYLE. YOUR RULES.</span>
+    <p>
+      From everyday essentials to statement pieces, explore fashion
+      you'll love — all in one place, right here in Kurnool.
+    </p>
 
+    <a href="#products" className="primary-button">
+      Explore the collection →
+    </a>
 
+    <div className="hero-note">
+      Your fashion destination. Built for Kurnool.
+    </div>
+  </div>
 
-                <h1>
+  <div className="hero-image">
+    <img
+      src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=2400&q=90"
+      alt="Contemporary fashion collection"
+    />
 
-                  Fashion that<br />
-
-                  moves <span>with you.</span>
-
-                </h1>
-
-
-
-                <p>
-
-                  Discover the latest trends, explore your favourite styles
-
-                  and shop everything you love in one place.
-
-                </p>
-
-
-
-                <a href="#products" className="primary-button">
-
-                  Shop Collection &#8592;’
-
-                </a>
-
-
-
-                <div className="hero-note">
-
-                  Now launching in Kurnool
-
-                </div>
-
-              </div>
-
-
-
-              <div className="hero-image">
-
-                <img
-
-                  src="https://images.unsplash.com/photo-1483985988355-763728e1935b?w=1100"
-
-                  alt="Fashion collection"
-
-                />
-
-
-
-                <div className="delivery-card">
-
-                  <span>&#9889;</span>
-
-                  <div>
-
-                    <strong>15-Min Delivery</strong>
-
-                    <small>Our target delivery promise</small>
-
-                  </div>
-
-                </div>
-
-              </div>
-
-            </section>
-
-
+    <div className="delivery-card">
+      <span>✦</span>
+      <div>
+        <strong>Fashion, closer to you</strong>
+        <small>Discover styles from local stores</small>
+      </div>
+    </div>
+  </div>
+</section>
 
             <section className="benefits">
 
@@ -971,55 +932,44 @@ const backToShopping = () => {
             </section>
 
 
+<section className="categories-section" id="categories">
+  <div className="section-heading">
+    <div>
+      <span className="eyebrow">CURATED FOR YOUR STYLE</span>
+      <h2>Find your fashion</h2>
+      <p>Explore the styles that make every day yours.</p>
+    </div>
+  </div>
 
-            <section className="categories-section" id="categories">
+  <div className="category-list">
+    {categories.filter(item => item !== 'All').map(item => (
+      <button
+        key={item}
+        className={`category-card category-${item.toLowerCase()}`}
+        onClick={() => {
+          setCategory(item)
+          document.getElementById('products')?.scrollIntoView({
+            behavior: 'smooth',
+          })
+        }}
+      >
+        <img
+          className="category-card-image"
+          src={{
+            Men: '/images/men-campaign.png',
+            Women: 'https://faridagupta.com/cdn/shop/files/1_42829d59-95c2-40c7-a12e-021abc482e67.jpg?v=1777956879',
+            Footwear: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=1000&q=85',
+            Accessories: 'https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=1000&q=85',
+          }[item]}
+          alt={`${item} fashion collection`}
+        />
 
-              <div className="section-heading">
-
-                <div>
-
-                  <span className="eyebrow">EXPLORE YOUR STYLE</span>
-
-                  <h2>Shop by category</h2>
-
-                </div>
-
-              </div>
-
-
-
-              <div className="category-list">
-
-                {categories.filter(item => item !== 'All').map(item => (
-
-                  <button
-
-                    key={item}
-
-                    onClick={() => {
-
-                      setCategory(item)
-
-                      document.getElementById('products')?.scrollIntoView({
-
-                        behavior: 'smooth',
-
-                      })
-
-                    }}
-
-                  >
-
-                    {item} <span>&#8592;—</span>
-
-                  </button>
-
-                ))}
-
-              </div>
-
-            </section>
-
+        <span>{item}</span>
+        <span className="category-arrow">↗</span>
+      </button>
+    ))}
+  </div>
+</section>
 
 
             <section className="products-section" id="products">
