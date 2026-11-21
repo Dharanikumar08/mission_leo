@@ -879,8 +879,15 @@ const backToShopping = () => {
         ) : (
 
           <>
+          <section className="hero hero-background" id="home">
+  <img
+    className="hero-background-image"
+    src="/images/fashiongo-hero.png"
+    alt="FashionGo Indian fashion campaign"
+  />
 
-<section className="hero" id="home">
+  <div className="hero-background-overlay"></div>
+
   <div className="hero-content">
     <span className="eyebrow">STYLE, REIMAGINED FOR EVERYDAY</span>
 
@@ -900,21 +907,6 @@ const backToShopping = () => {
 
     <div className="hero-note">
       Your fashion destination. Built for Kurnool.
-    </div>
-  </div>
-
-  <div className="hero-image">
-    <img
-      src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=2400&q=90"
-      alt="Contemporary fashion collection"
-    />
-
-    <div className="delivery-card">
-      <span>✦</span>
-      <div>
-        <strong>Fashion, closer to you</strong>
-        <small>Discover styles from local stores</small>
-      </div>
     </div>
   </div>
 </section>
