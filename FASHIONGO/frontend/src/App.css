@@ -63,29 +63,44 @@
   color: var(--fg-gold);
 }
 
-.nav,
+/* FASHIONGO PREMIUM NAVIGATION */
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+.nav a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #34312b;
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  text-transform: none;
+  text-decoration: none;
+  transition: color 0.25s ease;
+}
+
+.nav a:hover {
+  color: #ad8950;
+}
+
+.nav-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #ad8950;
+  font-size: 19px;
+  line-height: 1;
+}
+
 .header-actions {
   display: flex;
   align-items: center;
-  gap: 25px;
-}
-
-.nav a,
-.search-link {
-  color: #514e48;
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  transition: color .2s ease;
-}
-
-.nav a:hover,
-.search-link:hover {
-  color: var(--fg-gold);
-}
-
-.header-actions {
   gap: 12px;
 }
 
@@ -113,12 +128,21 @@
 }
 
 .account-button {
+  appearance: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
   padding: 10px 13px;
   border: 1px solid #c9c1b3;
+  border-radius: 4px;
   background: transparent;
   color: var(--fg-ink);
+  font-family: inherit;
   font-size: 11px;
   font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
 }
 
 .account-button:hover {
@@ -128,8 +152,12 @@
 }
 
 .account-name {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
   color: var(--fg-muted);
   font-size: 11px;
+  white-space: nowrap;
 }
 
 /* HERO */
@@ -1456,4 +1484,207 @@ footer small {
   .hero-background-overlay {
     background: rgba(0, 0, 0, 0.48);
   }
+}
+/* PREMIUM FASHIONGO ANNOUNCEMENT BAR */
+
+.announcement {
+  min-height: 38px;
+  padding: 9px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 13px;
+  flex-wrap: wrap;
+  background: #f5f1e9;
+  color: #34312b;
+  border-bottom: 1px solid #e8dfd0;
+  font-family: 'Inter', sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+.announcement-star {
+  color: #b89a62;
+  font-size: 13px;
+}
+
+.announcement-divider {
+  color: #b89a62;
+}
+
+@media (max-width: 600px) {
+  .announcement {
+    gap: 7px;
+    font-size: 8px;
+    letter-spacing: 1px;
+    padding: 9px 10px;
+  }
+}
+/* PREMIUM FASHIONGO NAVIGATION */
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+.nav a {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: #34312b;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  transition: color 0.25s ease;
+}
+
+.nav a:hover {
+  color: #ad8950;
+}
+
+.nav-icon {
+  font-size: 18px;
+  color: #ad8950;
+  line-height: 1;
+}
+
+@media (max-width: 768px) {
+  .nav {
+    gap: 18px;
+  }
+
+  .nav a {
+    font-size: 12px;
+  }
+}
+.nav a svg {
+  width: 19px;
+  height: 19px;
+  flex-shrink: 0;
+  fill: none;
+  stroke: #ad8950;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: transform 0.25s ease;
+}
+
+.nav a:hover svg {
+  transform: translateY(-2px);
+}
+/* PREMIUM ACCOUNT CONTROL ICONS */
+
+.account-button,
+.cart-button,
+.account-name {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+}
+
+.account-button svg,
+.cart-button svg,
+.account-name svg {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  fill: none;
+  stroke: #ad8950;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.account-button,
+.cart-button {
+  transition: color 0.25s ease, border-color 0.25s ease;
+}
+
+.account-button:hover,
+.cart-button:hover {
+  color: #ad8950;
+}
+
+/* FASHIONGO HEADER CONTROL RESET */
+.header-actions {
+  display: flex !important;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+  flex-wrap: nowrap;
+}
+
+.header-actions button.account-button {
+  appearance: none !important;
+  -webkit-appearance: none !important;
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  width: auto;
+  min-width: max-content;
+  height: 40px;
+  padding: 0 14px;
+  border: 1px solid #c9c1b3;
+  border-radius: 3px;
+  background: #faf9f6;
+  color: #24221f;
+  font: inherit;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.header-actions a.cart-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 40px;
+  padding: 0 16px;
+  text-decoration: none;
+}
+
+.header-actions button.account-button:hover {
+  background: #24221f;
+  color: #fff;
+}
+
+.header-actions button.account-button svg,
+.header-actions a.cart-button svg {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+/* Premium FashionGo header buttons */
+.header-actions button.account-button {
+  appearance: none;
+  border: none;
+  background: transparent;
+  color: #34312b;
+  padding: 10px 8px;
+  font-family: inherit;
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: none;
+}
+
+.header-actions button.account-button:hover {
+  background: transparent;
+  color: #ad8950;
+  border: none;
+}
+
+.header-actions .account-name {
+  color: #77716a;
 }

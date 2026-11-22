@@ -429,13 +429,13 @@ const backToShopping = () => {
 
 
 
-      <div className="announcement">
-
-        <span>FAST FASHION, FAST DELIVERY</span>
-
-        <span>Discover your style with FashionGo</span>
-
-      </div>
+     <div className="announcement">
+  <span className="announcement-star">✦</span>
+  <span>THE FASHIONGO EDIT</span>
+  <span className="announcement-divider">|</span>
+  <span>Discover timeless style. Explore new possibilities.</span>
+  <span className="announcement-star">✦</span>
+</div>
 
       {showAuth && (
 
@@ -481,49 +481,51 @@ const backToShopping = () => {
 
         </button>
 
+      <nav className={menuOpen ? 'nav open' : 'nav'}>
 
+  <a href="#home" onClick={() => {
+    backToShopping()
+    setMenuOpen(false)
+  }}>
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-6v-7h-4v7H4a1 1 0 0 1-1-1z" />
+    </svg>
+    <span>Home</span>
+  </a>
 
-        <nav className={menuOpen ? 'nav open' : 'nav'}>
+  <a href="#products" onClick={() => {
+    backToShopping()
+    setMenuOpen(false)
+  }}>
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M5 8h14l1 13H4L5 8Z" />
+      <path d="M9 8a3 3 0 0 1 6 0" />
+    </svg>
+    <span>Shop</span>
+  </a>
 
-          <a href="#home" onClick={() => {
+  <a href="#categories" onClick={() => {
+    backToShopping()
+    setMenuOpen(false)
+  }}>
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <rect x="3" y="3" width="8" height="8" rx="1" />
+      <rect x="13" y="3" width="8" height="8" rx="1" />
+      <rect x="3" y="13" width="8" height="8" rx="1" />
+      <rect x="13" y="13" width="8" height="8" rx="1" />
+    </svg>
+    <span>Categories</span>
+  </a>
 
-            backToShopping()
+  <a href="#footer" onClick={() => setMenuOpen(false)}>
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <circle cx="12" cy="12" r="9" />
+      <path d="M12 11v5M12 8h.01" />
+    </svg>
+    <span>About</span>
+  </a>
 
-            setMenuOpen(false)
-
-          }}>Home</a>
-
-
-
-          <a href="#products" onClick={() => {
-
-            backToShopping()
-
-            setMenuOpen(false)
-
-          }}>Shop</a>
-
-
-
-          <a href="#categories" onClick={() => {
-
-            backToShopping()
-
-            setMenuOpen(false)
-
-          }}>Categories</a>
-
-
-
-          <a href="#footer" onClick={() => setMenuOpen(false)}>
-
-            About
-
-          </a>
-
-        </nav>
-
-
+</nav>
 
         <div className="header-actions">
 
@@ -547,16 +549,15 @@ const backToShopping = () => {
 
     <>
 
-    <button
-
+   <button
   className="account-button"
-
   onClick={fetchMyOrders}
-
 >
-
+  <svg viewBox="0 0 24 24" aria-hidden="true">
+    <path d="M4 7h16v14H4z" />
+    <path d="M8 7V4h8v3M8 12h8M8 16h5" />
+  </svg>
   My Orders
-
 </button>
 
 {currentUser.role === 'admin' && (

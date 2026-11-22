@@ -4,3 +4,9 @@ node_modules/
 !.env.example
 *.log
 server.backup.js
+# Private admin utility
+promote-admin.js
+
+# Local backup files
+*.backup.js
+*.before-admin.js
