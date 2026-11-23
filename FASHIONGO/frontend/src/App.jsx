@@ -54,6 +54,8 @@ function App() {
 
   const [category, setCategory] = useState('All')
 
+  const [sortBy, setSortBy] = useState('recommended')
+
   const [cart, setCart] = useState([])
 
   const [menuOpen, setMenuOpen] = useState(false)
@@ -180,26 +182,32 @@ const [authToken, setAuthToken] = useState(
 
 
   const filteredProducts = useMemo(() => {
+  const result = products.filter(product => {
+    const matchesCategory =
+      category === 'All' || product.category === category
 
-    return products.filter(product => {
+    const matchesSearch =
+      product.name.toLowerCase().includes(search.toLowerCase())
 
-      const matchesCategory =
+    return matchesCategory && matchesSearch
+  })
 
-        category === 'All' || product.category === category
+  if (sortBy === 'price-low') {
+    result.sort((a, b) => Number(a.price) - Number(b.price))
+  }
 
+  if (sortBy === 'price-high') {
+    result.sort((a, b) => Number(b.price) - Number(a.price))
+  }
 
+  if (sortBy === 'newest') {
+    result.sort((a, b) =>
+      new Date(b.createdAt || 0) - new Date(a.createdAt || 0)
+    )
+  }
 
-      const matchesSearch =
-
-        product.name.toLowerCase().includes(search.toLowerCase())
-
-
-
-      return matchesCategory && matchesSearch
-
-    })
-
-  }, [products, category, search])
+  return result
+}, [products, category, search, sortBy])
 
 
 
@@ -562,19 +570,24 @@ const backToShopping = () => {
 
 {currentUser.role === 'admin' && (
   <button
-    className="account-button"
-    onClick={openAdminDashboard}
-  >
-    Admin Dashboard
-  </button>
+  className="account-button"
+  onClick={openAdminDashboard}
+>
+  <svg viewBox="0 0 24 24" aria-hidden="true">
+    <rect x="3" y="3" width="18" height="18" rx="2" />
+    <path d="M9 21V9h6v12M3 9h18" />
+  </svg>
+  Admin
+</button>
 )}
 
-
-      <span className="account-name">
-
-        Hi, {currentUser.name}
-
-      </span>
+<span className="account-name">
+  <svg viewBox="0 0 24 24" aria-hidden="true">
+    <circle cx="12" cy="8" r="4" />
+    <path d="M4 21a8 8 0 0 1 16 0" />
+  </svg>
+  Hi, {currentUser.name}
+</span>
 
 
 
@@ -594,27 +607,29 @@ const backToShopping = () => {
 
   ) : (
 
-    <button
-
-      className="account-button"
-
-      onClick={() => setShowAuth(true)}
-
-    >
-
-      Login / Register
-
-    </button>
+   <button
+  className="account-button"
+  onClick={() => setShowAuth(true)}
+>
+  <svg viewBox="0 0 24 24" aria-hidden="true">
+    <circle cx="12" cy="8" r="4" />
+    <path d="M4 21a8 8 0 0 1 16 0" />
+  </svg>
+  Login / Register
+</button>
 
   )}
 
 
 
-  <a href="#cart" className="cart-button">
-
-    Cart <span>{cart.length}</span>
-
-  </a>
+ <a href="#cart" className="cart-button">
+  <svg viewBox="0 0 24 24" aria-hidden="true">
+    <path d="M3 3h2l2.5 12h11L21 7H6" />
+    <circle cx="9" cy="20" r="1" />
+    <circle cx="18" cy="20" r="1" />
+  </svg>
+  Cart <span>{cart.length}</span>
+</a>
 
 </div>
 
@@ -1028,6 +1043,17 @@ const backToShopping = () => {
                   onChange={event => setSearch(event.target.value)}
 
                 />
+
+                <select
+  className="sort-select"
+  value={sortBy}
+  onChange={event => setSortBy(event.target.value)}
+>
+  <option value="recommended">Recommended</option>
+  <option value="price-low">Price: Low to High</option>
+  <option value="price-high">Price: High to Low</option>
+  <option value="newest">Newest First</option>
+</select>
 
               </div>
 
